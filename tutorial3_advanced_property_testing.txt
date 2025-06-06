@@ -1,0 +1,29 @@
+Title: AI Test Generation Tutorial 3 – Property-Based Testing with Hypothesis
+
+Step 1: Provide a function where mathematical properties can be verified.
+Example:
+def multiply(a, b):
+    return a * b
+
+Step 2: Prompt the AI:
+“Generate property-based tests using the Hypothesis library.”
+
+Step 3: Review the response.
+Example:
+from hypothesis import given
+import hypothesis.strategies as st
+
+@given(st.integers(), st.integers())
+def test_commutative(a, b):
+    assert multiply(a, b) == multiply(b, a)
+
+@given(st.integers(), st.integers())
+def test_distributive(a, b):
+    assert multiply(a, b + 1) == multiply(a, b) + a
+
+Step 4: Run the tests using `pytest` with Hypothesis installed.
+
+Step 5: Ask AI for more advanced properties.
+Prompt: “Add a test to verify that multiplying by 0 always returns 0.”
+
+Goal: Teach AI to discover and validate general behavioral laws through data-driven testing.
